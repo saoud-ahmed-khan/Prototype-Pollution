@@ -1,25 +1,22 @@
-/* Request body for Inconsistent Behavior
-{
-    "id": 1,
-    "name": "Alice",
-    "__proto__": {
-      "toString": "function() { return 'This is a polluted object'; }"
-    }
-  }
-  
-  
-    The attacker manipulates the `toString` method to generate unpredictable behavior,
-    leading to inconsistent application output.
-  */
-
 const express = require('express');
 const router = express.Router();
 
-// Inconsistent Behavior: Polluting prototype leading to unpredictable application behavior
-router.post('/', (req, res) => {
-    let userData = req.body;  // Attacker-controlled data
+/*
+  Inconsistent Behavior: The attacker manipulates the `toString` method to generate 
+  unpredictable behavior, leading to inconsistent application output.
+*/
 
-    res.send(userData.toString()); // Unpredictable output
+// Route for Inconsistent Behavior attack
+router.post('/', (req, res) => {
+  let userData = req.body; // Attacker-controlled data
+
+  // Simulated behavior of using toString
+  try {
+    const output = userData.toString(); // Unpredictable output due to prototype pollution
+    res.send(`Output: ${output}`);
+  } catch (error) {
+    res.status(500).send(`Error: ${error.message}`);
+  }
 });
 
 module.exports = router;

